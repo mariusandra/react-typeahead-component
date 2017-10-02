@@ -1,6 +1,8 @@
 Typeahead, written using the React.js library.
 ==============================================
 
+This repo works with React 16. However expect no support. Fork and modify yourself.
+
 Features
 ========
 * Accessibility.

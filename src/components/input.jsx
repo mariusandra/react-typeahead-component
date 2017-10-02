@@ -1,14 +1,16 @@
 'use strict';
 
 var React = require('react'),
+    PropTypes = require('prop-types'),
+    createClass = require('create-react-class'),
     ReactDOM = require('react-dom');
 
-module.exports = React.createClass({
+module.exports = createClass({
     displayName: 'Input',
 
     propTypes: process.env.NODE_ENV === 'production' ? {} : {
-        value: React.PropTypes.string,
-        onChange: React.PropTypes.func
+        value: PropTypes.string,
+        onChange: PropTypes.func
     },
 
     getDefaultProps: function() {

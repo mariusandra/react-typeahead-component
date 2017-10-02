@@ -1,11 +1,11 @@
 var cx = require('classnames');
 
-module.exports = React.createClass({
+module.exports = createClass({
     displayName: 'OptionTemplate',
 
     propTypes: {
-        data: React.PropTypes.any,
-        isSelected: React.PropTypes.bool
+        data: PropTypes.any,
+        isSelected: PropTypes.bool
     },
 
     render: function() {

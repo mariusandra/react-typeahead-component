@@ -45,21 +45,21 @@ var MyApp = React.createClass({displayName: "MyApp",
 
     render: function() {
         return (
-            React.createElement("div", {className: "netflix-typeahead-container"}, 
+            React.createElement("div", {className: "netflix-typeahead-container"},
                 React.createElement("span", {
-                    role: "presentation", 
+                    role: "presentation",
                     className: "icon-search"}
-                ), 
+                ),
                 React.createElement(Typeahead, {
-                    ref: "typeahead", 
-                    placeholder: "Titles, people, genres", 
-                    inputValue: this.state.inputValue, 
-                    options: this.state.options, 
-                    onChange: this.handleChange, 
-                    optionTemplate: OptionTemplate, 
-                    onOptionChange: this.handleOptionChange, 
+                    ref: "typeahead",
+                    placeholder: "Titles, people, genres",
+                    inputValue: this.state.inputValue,
+                    options: this.state.options,
+                    onChange: this.handleChange,
+                    optionTemplate: OptionTemplate,
+                    onOptionChange: this.handleOptionChange,
                     onOptionClick: this.handleOptionClick}
-                ), 
+                ),
                 this.renderRemoveIcon()
             )
         );
@@ -69,7 +69,7 @@ var MyApp = React.createClass({displayName: "MyApp",
         if (this.state.inputValue.length > 0) {
             return (
                 React.createElement("button", {
-                    onClick: this.handleRemoveClick, 
+                    onClick: this.handleRemoveClick,
                     className: "icon-remove"}
                 )
             );
@@ -114,8 +114,8 @@ module.exports = React.createClass({
     displayName: 'OptionTemplate',
 
     propTypes: {
-        data: React.PropTypes.any,
-        isSelected: React.PropTypes.bool
+        data: PropTypes.any,
+        isSelected: PropTypes.bool
     },
 
     render: function() {
@@ -126,9 +126,9 @@ module.exports = React.createClass({
             optionData = this.props.data;
 
         return (
-            React.createElement("div", null, 
-                this.renderHeader(optionData), 
-                React.createElement("div", {className: classes}, 
+            React.createElement("div", null,
+                this.renderHeader(optionData),
+                React.createElement("div", {className: classes},
                     optionData.value
                 )
             )
@@ -140,7 +140,7 @@ module.exports = React.createClass({
         // then render the header.
         if (option.index === 0) {
             return (
-                React.createElement("div", {className: "option-header"}, 
+                React.createElement("div", {className: "option-header"},
                     option.type
                 )
             );
@@ -2933,7 +2933,7 @@ function plural(ms, n, name) {
       this.sources = sources;
       __super__.call(this);
     }
-    
+
     ConcatEnumerableObservable.prototype.subscribeCore = function (o) {
       var isDisposed, subscription = new SerialDisposable();
       var cancelable = immediateScheduler.scheduleRecursiveWithState(this.sources[$iterator$](), function (e, self) {
@@ -2958,7 +2958,7 @@ function plural(ms, n, name) {
         isDisposed = true;
       }));
     };
-    
+
     function InnerObserver(o, s, e) {
       this.o = o;
       this.s = s;
@@ -2987,21 +2987,21 @@ function plural(ms, n, name) {
       }
       return false;
     };
-    
+
     return ConcatEnumerableObservable;
   }(ObservableBase));
 
   Enumerable.prototype.concat = function () {
     return new ConcatEnumerableObservable(this);
   };
-  
+
   var CatchErrorObservable = (function(__super__) {
     inherits(CatchErrorObservable, __super__);
     function CatchErrorObservable(sources) {
       this.sources = sources;
       __super__.call(this);
     }
-    
+
     CatchErrorObservable.prototype.subscribeCore = function (o) {
       var e = this.sources[$iterator$]();
 
@@ -3030,7 +3030,7 @@ function plural(ms, n, name) {
         isDisposed = true;
       }));
     };
-    
+
     return CatchErrorObservable;
   }(ObservableBase));
 
@@ -3091,18 +3091,18 @@ function plural(ms, n, name) {
       }));
     });
   };
-  
+
   var RepeatEnumerable = (function (__super__) {
     inherits(RepeatEnumerable, __super__);
-    
+
     function RepeatEnumerable(v, c) {
       this.v = v;
       this.c = c == null ? -1 : c;
     }
     RepeatEnumerable.prototype[$iterator$] = function () {
-      return new RepeatEnumerator(this); 
+      return new RepeatEnumerator(this);
     };
-    
+
     function RepeatEnumerator(p) {
       this.v = p.v;
       this.l = p.c;
@@ -3110,16 +3110,16 @@ function plural(ms, n, name) {
     RepeatEnumerator.prototype.next = function () {
       if (this.l === 0) { return doneEnumerator; }
       if (this.l > 0) { this.l--; }
-      return { done: false, value: this.v }; 
+      return { done: false, value: this.v };
     };
-    
+
     return RepeatEnumerable;
   }(Enumerable));
 
   var enumerableRepeat = Enumerable.repeat = function (value, repeatCount) {
     return new RepeatEnumerable(value, repeatCount);
   };
-  
+
   var OfEnumerable = (function(__super__) {
     inherits(OfEnumerable, __super__);
     function OfEnumerable(s, fn, thisArg) {
@@ -3129,7 +3129,7 @@ function plural(ms, n, name) {
     OfEnumerable.prototype[$iterator$] = function () {
       return new OfEnumerator(this);
     };
-    
+
     function OfEnumerator(p) {
       this.i = -1;
       this.s = p.s;
@@ -3139,9 +3139,9 @@ function plural(ms, n, name) {
     OfEnumerator.prototype.next = function () {
      return ++this.i < this.l ?
        { done: false, value: !this.fn ? this.s[this.i] : this.fn(this.s[this.i], this.i, this.s) } :
-       doneEnumerator; 
+       doneEnumerator;
     };
-    
+
     return OfEnumerable;
   }(Enumerable));
 
@@ -3193,18 +3193,18 @@ function plural(ms, n, name) {
 			this.p = p;
 			__super__.call(this);
 		}
-		
+
 		FromPromiseObservable.prototype.subscribeCore = function(o) {
 			this.p.then(function (data) {
 				o.onNext(data);
 				o.onCompleted();
 			}, function (err) { o.onError(err); });
-			return disposableEmpty;	
+			return disposableEmpty;
 		};
-		
+
 		return FromPromiseObservable;
-	}(ObservableBase));	 
-	 
+	}(ObservableBase));
+
 	 /**
 	 * Converts a Promise to an Observable sequence
 	 * @param {Promise} An ES6 Compliant promise.
@@ -3277,7 +3277,7 @@ function plural(ms, n, name) {
         this.o.onError(e);
         return true;
       }
- 
+
       return false;
     };
 
@@ -3659,7 +3659,7 @@ function plural(ms, n, name) {
           observer.onNext(changes[i]);
         }
       }
-      
+
       Array.observe(array, observerFn);
 
       return function () {
@@ -4191,12 +4191,12 @@ function plural(ms, n, name) {
 			this.sources = sources;
 			__super__.call(this);
 		}
-		
+
 		ConcatObservable.prototype.subscribeCore = function(o) {
       var sink = new ConcatSink(this.sources, o);
       return sink.run();
 		};
-    
+
     function ConcatSink(sources, o) {
       this.sources = sources;
       this.o = o;
@@ -4208,7 +4208,7 @@ function plural(ms, n, name) {
         if (i === length) {
 					return o.onCompleted();
 				}
-	
+
         // Check if promise
         var currentValue = sources[i];
         isPromise(currentValue) && (currentValue = observableFromPromise(currentValue));
@@ -4226,11 +4226,11 @@ function plural(ms, n, name) {
         isDisposed = true;
       }));
     };
-    
-		
+
+
 		return ConcatObservable;
 	}(ObservableBase));
-  
+
   /**
    * Concatenates all the observable sequences.
    * @param {Array | Arguments} args Arguments or an array to concat to the observable sequence.
@@ -4419,7 +4419,7 @@ function plural(ms, n, name) {
       m.setDisposable(this.source.subscribe(new MergeAllObserver(observer, g)));
       return g;
     };
-    
+
     function MergeAllObserver(o, g) {
       this.o = o;
       this.g = g;
@@ -5280,7 +5280,7 @@ function plural(ms, n, name) {
   };
 
   /**
-   *  Repeats the source observable sequence upon error each time the notifier emits or until it successfully terminates. 
+   *  Repeats the source observable sequence upon error each time the notifier emits or until it successfully terminates.
    *  if the notifier completes, the observable sequence completes.
    *
    * @example
@@ -5334,7 +5334,7 @@ function plural(ms, n, name) {
     }
     this.observer.onNext(this.accumulation);
   };
-  ScanObserver.prototype.onError = function (e) { 
+  ScanObserver.prototype.onError = function (e) {
     if (!this.isStopped) {
       this.isStopped = true;
       this.observer.onError(e);
@@ -5634,7 +5634,7 @@ function plural(ms, n, name) {
           found = true;
           observer.onNext(x);
         },
-        function (e) { observer.onError(e); }, 
+        function (e) { observer.onError(e); },
         function () {
           !found && observer.onNext(defaultValue);
           observer.onCompleted();
@@ -5816,7 +5816,7 @@ function plural(ms, n, name) {
       this.selector = bindCallback(selector, thisArg, 3);
       __super__.call(this);
     }
-    
+
     function innerMap(selector, self) {
       return function (x, i, o) { return selector.call(this, self.selector(x, i, o), i, o); }
     }
@@ -5828,7 +5828,7 @@ function plural(ms, n, name) {
     MapObservable.prototype.subscribeCore = function (o) {
       return this.source.subscribe(new InnerObserver(o, this.selector, this));
     };
-    
+
     function InnerObserver(o, selector, source) {
       this.o = o;
       this.selector = selector;
@@ -5836,7 +5836,7 @@ function plural(ms, n, name) {
       this.i = 0;
       this.isStopped = false;
     }
-  
+
     InnerObserver.prototype.onNext = function(x) {
       if (this.isStopped) { return; }
       var result = tryCatch(this.selector)(x, this.i++, this.source);
@@ -5858,7 +5858,7 @@ function plural(ms, n, name) {
         this.o.onError(e);
         return true;
       }
-  
+
       return false;
     };
 
@@ -6019,11 +6019,11 @@ function plural(ms, n, name) {
       this.skipCount = count;
       __super__.call(this);
     }
-    
+
     SkipObservable.prototype.subscribeCore = function (o) {
       return this.source.subscribe(new InnerObserver(o, this.skipCount));
     };
-    
+
     function InnerObserver(o, c) {
       this.c = c;
       this.r = c;
@@ -6032,7 +6032,7 @@ function plural(ms, n, name) {
     }
     InnerObserver.prototype.onNext = function (x) {
       if (this.isStopped) { return; }
-      if (this.r <= 0) { 
+      if (this.r <= 0) {
         this.o.onNext(x);
       } else {
         this.r--;
@@ -6053,10 +6053,10 @@ function plural(ms, n, name) {
       }
       return false;
     };
-    
+
     return SkipObservable;
-  }(ObservableBase));  
-  
+  }(ObservableBase));
+
   /**
    * Bypasses a specified number of elements in an observable sequence and then returns the remaining elements.
    * @param {Number} count The number of elements to skip before returning the remaining elements.
@@ -6161,7 +6161,7 @@ function plural(ms, n, name) {
     FilterObservable.prototype.subscribeCore = function (o) {
       return this.source.subscribe(new InnerObserver(o, this.predicate, this));
     };
-    
+
     function innerPredicate(predicate, self) {
       return function(x, i, o) { return self.predicate(x, i, o) && predicate.call(this, x, i, o); }
     }
@@ -6169,7 +6169,7 @@ function plural(ms, n, name) {
     FilterObservable.prototype.internalFilter = function(predicate, thisArg) {
       return new FilterObservable(this.source, innerPredicate(predicate, this), thisArg);
     };
-    
+
     function InnerObserver(o, predicate, source) {
       this.o = o;
       this.predicate = predicate;
@@ -6177,7 +6177,7 @@ function plural(ms, n, name) {
       this.i = 0;
       this.isStopped = false;
     }
-  
+
     InnerObserver.prototype.onNext = function(x) {
       if (this.isStopped) { return; }
       var shouldYield = tryCatch(this.predicate)(x, this.i++, this.source);
@@ -6336,8 +6336,8 @@ function plural(ms, n, name) {
       }
       if (this.result === errorObj) { this.o.onError(this.result.e); }
     };
-    InnerObserver.prototype.onError = function (e) { 
-      if (!this.isStopped) { this.isStopped = true; this.o.onError(e); } 
+    InnerObserver.prototype.onError = function (e) {
+      if (!this.isStopped) { this.isStopped = true; this.o.onError(e); }
     };
     InnerObserver.prototype.onCompleted = function () {
       if (!this.isStopped) {
@@ -9051,10 +9051,10 @@ function plural(ms, n, name) {
     };
     return WhileEnumerable;
   }(Enumerable));
-  
+
   function enumerableWhile(condition, source) {
     return new WhileEnumerable(condition, source);
-  }  
+  }
 
    /**
    *  Returns an observable sequence that is the result of invoking the selector on the source sequence, without sharing subscriptions.
@@ -10157,7 +10157,7 @@ function plural(ms, n, name) {
         function (e) { o.onError(e); },
         function () {
           atEnd = true;
-          sourceSubscription.dispose(); 
+          sourceSubscription.dispose();
         }
       ));
 

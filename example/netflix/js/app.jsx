@@ -2,7 +2,7 @@ var OptionTemplate = require('./components/OptionTemplate.jsx');
 var OptionWebAPIUtils = require('./utils/OptionWebAPIUtils');
 var Rx = require('rx');
 
-var MyApp = React.createClass({
+var MyApp = createClass({
     getInitialState: function() {
         return {
             inputValue: '',

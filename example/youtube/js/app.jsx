@@ -3,7 +3,7 @@ var OptionActions = require('./actions/OptionActions');
 var OptionTemplate = require('./components/OptionTemplate.jsx');
 var throttle = require('lodash.throttle');
 
-var MyApp = React.createClass({
+var MyApp = createClass({
     getInitialState: function() {
         return {
             inputValue: '',

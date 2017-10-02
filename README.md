@@ -101,7 +101,7 @@ When instantiated, it is passed these props:
 
 ```jsx
 // OptionTemplate.jsx
-module.exports = React.createClass({
+module.exports = createClass({
     render: function() {
         var bgColor = null;
 

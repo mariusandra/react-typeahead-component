@@ -34,6 +34,7 @@
     "test:dev": "karma start --no-single-run --browsers Chrome"
   },
   "peerDependencies": {
+    "prop-types": "*",
     "react": "^0.14.0 || ^15.0.0-0"
   },
   "devDependencies": {
@@ -60,6 +61,7 @@
     "lolex": "^1.4.0",
     "mocha": "^2.2.4",
     "phantomjs-prebuilt": "^2.1.7",
+    "prop-types": "^15.5.10",
     "react": "^15.0.2",
     "react-addons-test-utils": "^15.0.2",
     "react-dom": "^15.0.2",
@@ -67,5 +69,8 @@
     "sinon": "^1.17.3",
     "sinon-chai": "^2.8.0",
     "webpack": "^1.12.9"
+  },
+  "dependencies": {
+    "create-react-class": "^15.6.0"
   }
 }
